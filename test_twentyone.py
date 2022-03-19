@@ -1,5 +1,6 @@
 from twentyone import *
 dealer = Dealer()
+player = Player()
 
 # Prueba la funcion para generar nueva mano
 # Resultado: 2 (True)
@@ -35,3 +36,25 @@ def test_determine_play():
 def test_make_play():
     dealer.hand = ['3','Q','5']
     assert dealer.make_play() == 'stand'
+
+def test_determine_split():
+    player.hand = ['8','8']
+    assert player.determine_split(player.hand) == True
+
+def test_get_even_hand():
+    player.hand = ['8','8']
+    assert player.get_even_hand() == 'yes'    
+
+def test_determine_winner():
+    dealer.totalPair = []
+    dealer.totalPair.append(19)
+    dealer.totalPair.append(20)
+    assert dealer.determine_winner(dealer.totalPair[0], dealer.totalPair[1]) == 'dealer'
+
+def test_make_winner():
+    dealer.totalPair = []
+    dealer.totalPair.append(19)
+    dealer.totalPair.append(24)
+    assert dealer.make_winner() == 'player'
+
+

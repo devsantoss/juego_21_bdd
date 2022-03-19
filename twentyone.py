@@ -32,7 +32,10 @@ class Player():
     def __init__(self):
         self.hand = []
     def get_even_hand(self):
-        return _even_hand(self.hand)  
+        return _even_hand(self.hand) 
+     
+    def determine_split(self, hand):
+        return any(i==j for i,j in zip(hand, hand[1:]))
 
 
 class Dealer():
@@ -56,9 +59,9 @@ class Dealer():
         return self.determine_play(self.get_hand_total())
     
     def determine_winner(self, totalPlayer, totalDealer):
-        if (totalDealer > totalPlayer) and totalDealer > 21:
+        if (totalDealer > totalPlayer) and totalDealer <= 21:
             return 'dealer'
-        elif (totalDealer == totalPlayer) and (totalDealer > 21 and totalPlayer > 21):
+        elif (totalDealer == totalPlayer) and (totalDealer <= 21 and totalPlayer <= 21):
             return 'dealer'
         else:
             return 'player'
@@ -67,5 +70,5 @@ class Dealer():
         return self.determine_winner(self.totalPair[0], self.totalPair[1])
 
     def round_over(self):
-        totalPlayer = get_hand_total(self.totalPair[0])
-        totalDealer = get_hand_total(self.totalPair[1])
+        totalPlayer = self.totalPair[0]
+        totalDealer = self.totalPair[1]

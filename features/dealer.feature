@@ -71,8 +71,6 @@ Scenario Outline: Split a players hand
 
   Examples: Hands
   | hand          | split |
-  | 5,5           | yes    |
-  | Q,Q           | yes    |
   | Q,A           | no    |
   | J,Q           | no    |
   | A,A           | yes    |
@@ -81,12 +79,12 @@ Scenario Outline: Split a players hand
 
 
 Scenario Outline: Game determines who wins
-  Given a player and dealer <totalPair>
+  Given the values of player and dealer <totalPair>
   When the round is over
   Then the <winner> is who gets 21 
 
   Examples: Hands
-  | total          | winner |
+  | totalPair          | winner |
   | 25,18           | dealer    |
   | 20,23           | player    |
   | 19,21           | dealer    |
