@@ -21,16 +21,24 @@ def _hand_total(hand):
 
     return total
 
+def _even_hand(hand):
+    verified = any(i==j for i,j in zip(hand, hand[1:]))
+    if verified:
+        return 'yes'
+    else:
+        return 'no'
+
 class Player():
     def __init__(self):
         self.hand = []
     def get_even_hand(self):
-        if self.hand.split(',')  
+        return _even_hand(self.hand)  
 
 
 class Dealer():
     def __init__(self):
         self.hand = []
+        self.totalPair = []
 
     def new_round(self):
         self.hand = [_next_card(), _next_card()]
@@ -56,4 +64,8 @@ class Dealer():
             return 'player'
 
     def make_winner(self):
-        return.self.determine_winner(self.get_hand_total)
+        return self.determine_winner(self.totalPair[0], self.totalPair[1])
+
+    def round_over(self):
+        totalPlayer = get_hand_total(self.totalPair[0])
+        totalDealer = get_hand_total(self.totalPair[1])

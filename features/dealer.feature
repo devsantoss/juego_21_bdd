@@ -65,9 +65,9 @@ debo determinar cuando separar la jugada.
 """
 
 Scenario Outline: Split a players hand
-  Given a players <hand>
-  When the cards are even
-  Then the <split> is correct
+  Given the value of player <hand>
+  When the player determines the split
+  Then the action of <split> is valid
 
   Examples: Hands
   | hand          | split |
@@ -81,8 +81,8 @@ Scenario Outline: Split a players hand
 
 
 Scenario Outline: Game determines who wins
-  Given a player and dealer <total>
-  When the round's over
+  Given a player and dealer <totalPair>
+  When the round is over
   Then the <winner> is who gets 21 
 
   Examples: Hands
