@@ -61,7 +61,7 @@ Scenario: A Dealer can always play
 
 """
 como jugador dado una mano 
-debo determinar cuando separar la jugada.
+debo determinar cuando separar la mano.
 """
 
 Scenario Outline: Split a players hand

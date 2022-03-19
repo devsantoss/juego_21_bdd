@@ -54,9 +54,9 @@ def step_impl(context, hand):
 def step_impl(context):
     context.player_split = context.player.determine_split(context.player.hand)
 
-@then('the action of split is valid')
-def step_impl(context):
-    assert (context.player.get_even_hand() in ['yes', 'no'])
+@then('the action of {split} is valid')
+def step_impl(context, split):
+    assert (context.player.get_even_hand() == split)
 
 # Cuando determinar un ganador
 @given('the values of player and dealer {totalPair}')
@@ -68,6 +68,6 @@ def step_impl(context, totalPair):
 def step_impl(context):
     context.dealer.round_over()
 
-@then('the winner is who gets 21')
-def step_impl(context):
-    assert (context.dealer.make_winner() in ['player', 'dealer'])
+@then('the {winner} is who gets 21')
+def step_impl(context, winner):
+    assert (context.dealer.make_winner() == winner)

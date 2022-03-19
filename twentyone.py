@@ -59,9 +59,11 @@ class Dealer():
         return self.determine_play(self.get_hand_total())
     
     def determine_winner(self, totalPlayer, totalDealer):
-        if (totalDealer > totalPlayer) and totalDealer <= 21:
+        if (int(totalDealer) > int(totalPlayer)) and int(totalDealer) <= 21:
             return 'dealer'
-        elif (totalDealer == totalPlayer) and (totalDealer <= 21 and totalPlayer <= 21):
+        elif (int(totalDealer) == int(totalPlayer)) and (int(totalDealer) <= 21 and int(totalPlayer) <= 21):
+            return 'dealer'
+        elif (int(totalDealer) < int(totalPlayer)) and (int(totalDealer) <= 21 and int(totalPlayer) > 21):
             return 'dealer'
         else:
             return 'player'
@@ -70,5 +72,5 @@ class Dealer():
         return self.determine_winner(self.totalPair[0], self.totalPair[1])
 
     def round_over(self):
-        totalPlayer = self.totalPair[0]
-        totalDealer = self.totalPair[1]
+        totalPlayer = int(self.totalPair[0])
+        totalDealer = int(self.totalPair[1])
